@@ -13,11 +13,12 @@ React: npm start
 2. Create db and tables (user, score, user_score)
 3. Install node in server directory: npm init
 4. Install node dependencies: npm install express mysql cors nodemon --save
+6. Install the react: npx create-react-app .
 
 # TODO
 
 5. Create index.js file for node and setup express, mysql, cors, nodemon
-6. Install the react: npx create-react-app .
+
 7. Install axios dependency: npm install axios
 8. Create the app entry screen where user selects player mode
 9. Create the game settings page (user enters name to form and gets stored to db or gets alredy enterd user) with a button to start the game
