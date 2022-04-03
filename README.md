@@ -34,3 +34,4 @@ React: npm start
 # Work tracking
 
 0. Start at 17:30 on 3.4.2022 
+1. Stopped at 19:15 on 3.4.2022 (total 1h 45 min)
