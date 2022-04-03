@@ -3,7 +3,8 @@ This is a memory game where a player can challenge his memory by finding the pai
 
 # How to run the node and react app?
  
-Node: node index.js
+Node for prod: npm run start
+Node for development: npm run dev
 React: npm start
 
 # Done
