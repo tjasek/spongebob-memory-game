@@ -1,16 +1,22 @@
 # spongebob-memory-game
 This is a memory game where a player can challenge his memory by finding the pairs of cards turning them around. The faster the player finds the pairs the better the score. If the game is executed in multi-player mode, the player with most pairs wins when there are no more pairs to find.
 
+# How to run the node and react app?
+ 
+Node: node index.js
+React: npm start
+
 # Done
-
-
-# TODO
 
 0. Create the git directory
 1. Create 2 directories - 1 for back end (node rest api) and 1 for front end (react js)
-2. Create db and tables (user, score, user_score)
 3. Install node in server directory: npm init
 4. Install node dependencies: npm install express mysql cors nodemon --save
+
+# TODO
+
+
+2. Create db and tables (user, score, user_score)
 5. Create index.js file for node and setup express, mysql, cors, nodemon
 6. Install the react: npx create-react-app .
 7. Install axios dependency: npm install axios
