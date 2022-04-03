@@ -10,13 +10,12 @@ React: npm start
 
 0. Create the git directory
 1. Create 2 directories - 1 for back end (node rest api) and 1 for front end (react js)
+2. Create db and tables (user, score, user_score)
 3. Install node in server directory: npm init
 4. Install node dependencies: npm install express mysql cors nodemon --save
 
 # TODO
 
-
-2. Create db and tables (user, score, user_score)
 5. Create index.js file for node and setup express, mysql, cors, nodemon
 6. Install the react: npx create-react-app .
 7. Install axios dependency: npm install axios
