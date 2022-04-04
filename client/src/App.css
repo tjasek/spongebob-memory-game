@@ -1,21 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  background-color: #6dcff6;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 60vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-title {
+  margin-top: 20px;
+  font-family: "Press Start 2P", cursive;
+  color: #fce92a;
+  text-shadow: 2px 2px #ff0000;
+}
+
+.App-mode-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.App-mode-buttons button {
+  width: 250px;
+  height: 70px;
+  margin: 20px;
+  font-size: 20px;
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+  border: 5px solid;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 130vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +52,12 @@
   color: #61dafb;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +65,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 600px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+
+  .App-header {
+    min-height: auto;
+  }
+
+  .App-title {
+    line-height: 45px;
+    text-shadow: 2px 2px #ff0000;
+}
+
+  .App-mode-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 }
