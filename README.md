@@ -7,6 +7,13 @@ Node for prod: npm run start
 Node for development: npm run dev
 React: npm start
 
+# Links to main pages
+
+0. Home page: http://localhost:3000/single-player-top-scores
+1. Single player game: http://localhost:3000/single-player
+2. Multi player game: http://localhost:3000/multi-player
+3. Top 10 score board for single players: http://localhost:3000/single-player-top-scores
+
 # Done
 
 0. Create the git directory
