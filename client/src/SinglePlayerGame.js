@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
 import "./App.css";
 
@@ -48,6 +48,8 @@ function SinglePlayerGame() {
   const [openCards, setOpenedCards] = useState([]);
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const [foundCouples, setFoundCouples] = useState([]);
+
+  let timeout = useRef(null);
 
   const createPlayer = () => {
     // check if name not null, throw error if it is
@@ -102,6 +104,43 @@ function SinglePlayerGame() {
       setOpenedCards([index]);
     }
   };
+
+  const [first, second] = openCards;
+  // if both currently opened cards are the same, then add them to foundCouples array
+  const isPairFound = () => {
+    if (cards[first] === cards[second]) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const evaluate = () => {
+    enable();
+    const pairFound = isPairFound();
+    if (pairFound) {
+      // add to the found couples array
+      setFoundCouples((prev) => ({ ...prev, [cards[first].id]: true }));
+      // clear the opened array
+      setOpenedCards([]);
+      return;
+    }
+    // This is to flip the cards back after 1.5s duration
+    timeout = setTimeout(() => {
+      setOpenedCards([]);
+    }, 1500);
+  };
+
+  // when there are 2 opened cards evaluate if they are a pair
+  useEffect(() => {
+    let timeout = null;
+    if (openCards.length === 2) {
+      timeout = setTimeout(evaluate, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  });
 
   return (
     <div>
