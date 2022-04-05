@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
 import Link from "./Link";
 import "./App.css";
+import WinningMessage from "./WinningMessage";
 
 const possibleCards = [
   {
@@ -250,8 +251,10 @@ function SinglePlayerGame() {
       <p>Game Time: {playingTime}</p>
       {victoryMsg !== "" ? (
         <>
-          <h3 className="Victory-title">{victoryMsg}</h3>
-          <Link href="/single-player-top-scores">View top 10 scores</Link>
+          <h3 className="Victory-title">
+            <WinningMessage />
+          </h3>
+          <Link href="/single-player-top-scores" className="Link-buttons">View top 10 scores</Link>
         </>
       ) : (
         <div className="Cards-container">
