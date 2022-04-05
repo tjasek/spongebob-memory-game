@@ -45,6 +45,8 @@ function SinglePlayerGame() {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [cards, setCards] = useState([]);
+  const [openCards, setOpenedCards] = useState([]);
+  const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
 
   const createPlayer = () => {
     // check if name not null, throw error if it is
@@ -71,6 +73,29 @@ function SinglePlayerGame() {
   const playGame = () => {
     // Set the shufeled cards
     setCards(shuffleCards.bind(null, possibleCards.concat(possibleCards)));
+    // enable cards
+    enable();
+  };
+
+  const disable = () => {
+    setShouldDisableAllCards(true);
+  };
+
+  const enable = () => {
+    setShouldDisableAllCards(false);
+  };
+
+  const isCardOpened = (id) => {
+    return openCards.includes(id);
+  };
+
+  const cardClicked = (index) => {
+    if (openCards.length === 1) {
+      setOpenedCards((prev) => [...prev, index]);
+      disable();
+    } else {
+      setOpenedCards([index]);
+    }
   };
 
   return (
@@ -105,10 +130,10 @@ function SinglePlayerGame() {
                 key={index}
                 card={card}
                 index={index}
-                isDisabled={false}
+                isDisabled={shouldDisableAllCards}
                 isInactive={false}
-                isOpened={false}
-                onClick={"todo"}
+                isOpened={isCardOpened(index)}
+                onClick={cardClicked}
               />
             );
           })}
