@@ -7,8 +7,8 @@ const EntryPage = () => {
       <img src={logo} className="App-logo" alt="logo" />
       <h1 className="App-title">SpongeBob Memory Game</h1>
       <div className="App-mode-buttons">
-        <Link href="/single-player">Single Player</Link>
-        <Link href="/multi-player">Multi Player</Link>
+        <Link href="/single-player" className="Link-buttons">Single Player</Link>
+        <Link href="/multi-player" className="Link-buttons">Multi Player</Link>
       </div>
     </div>
   );

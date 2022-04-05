@@ -16,7 +16,7 @@ input {
 }
 
 input:active {
-  border:none;
+  border: none;
 }
 
 button {
@@ -69,7 +69,7 @@ button:disabled {
   width: 250px;
 }
 
-.App-mode-buttons a {
+a.Link-buttons {
   width: 230px;
   line-height: 20px;
   margin: 20px;
@@ -84,7 +84,7 @@ button:disabled {
   text-transform: uppercase;
 }
 
-.App-mode-buttons a:hover {
+a.Link-buttons:hover {
   background-color: #d76aa1;
 }
 
@@ -130,34 +130,34 @@ button:disabled {
 }
 
 button.Play-game {
-    width: 300px;
-    font-size: 30px;
-    color: #ff0000;
-    background-color: #fce92a;
-    text-transform: uppercase;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -o-border-radius: 7px;
-    border-radius: 7px;
-    border-color: #ff0000;
-    box-shadow: 0 .2em #ff0000; 
+  width: 300px;
+  font-size: 30px;
+  color: #ff0000;
+  background-color: #fce92a;
+  text-transform: uppercase;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  border-color: #ff0000;
+  box-shadow: 0 0.2em #ff0000;
 }
 
 button:hover.Play-game {
   background-color: #fcb92a;
 }
 
-button:disabled.Play-game    {
+button:disabled.Play-game {
   width: 300px;
   color: #eabdd2;
   background-color: #fff7a4;
   text-transform: uppercase;
   -webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	-o-border-radius: 7px;
-	border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
   border-color: #eabdd2;
-  box-shadow: 0 .2em #eabdd2; 
+  box-shadow: 0 0.2em #eabdd2;
 }
 
 .Break-row {
@@ -189,6 +189,10 @@ button:disabled.Play-game    {
   width: 100%;
 }
 
+.Victory-title {
+  margin: 90px 30px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -208,6 +212,9 @@ button:disabled.Play-game    {
   [class*="col-"] {
     width: 100%;
   }
+  .App {
+    min-height: fit-content;
+  }
 
   .App-header {
     min-height: auto;
@@ -224,5 +231,13 @@ button:disabled.Play-game    {
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+
+  a.Link-buttons {
+    font-size: 10px;
+  }
+
+  .Cards-container {
+    width: 320px;
   }
 }
