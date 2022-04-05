@@ -146,6 +146,22 @@ button:disabled.Play-game    {
   height: 0;
 }
 
+.Cards-container {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  justify-items: center;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 360px;
+  height: 360px;
+  perspective: 100%;
+  max-width: 720px;
+  background-color: #ffffff;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

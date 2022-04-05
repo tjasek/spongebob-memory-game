@@ -1,0 +1,43 @@
+.Card {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.Card.Opened {
+  transform: rotateY(180deg);
+}
+
+.Card.Inactive {
+  opacity: 0.4;
+}
+
+.Card img {
+  width: 95%;
+  height: 95%;
+}
+
+/* Position the front and back side */
+.Card-front, .Card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.Card-front {
+  background-color: #fce92a;
+  transform: rotateY(180deg);
+}
+
+/* Style the back side */
+.Card-back {
+  background-color: rgb(100, 193, 255); 
+}
