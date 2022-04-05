@@ -50,10 +50,12 @@ function SinglePlayerGame() {
   const [foundCouples, setFoundCouples] = useState([]);
   const [gameRunning, setGameRunning] = useState(false);
   const [playingTime, setPlayingTime] = useState(0);
+  const [moves, setMoves] = useState(0);
   const [victoryMsg, setVictoryMsg] = useState("");
   const [nameInputDisabled, setNameInputDisabled] = useState(false);
   const [okButtonDisabled, setOkButtonDisabled] = useState(false);
   const [playButtonDisabled, setPlayButtonDisabled] = useState(true);
+  const [scores, setScores] = useState([]);
 
   let timeout = useRef(null);
 
@@ -116,6 +118,7 @@ function SinglePlayerGame() {
   const cardClicked = (index) => {
     if (openCards.length === 1) {
       setOpenedCards((prev) => [...prev, index]);
+      setMoves((moves) => moves + 1);
       disable();
     } else {
       clearTimeout(timeout.current);
@@ -177,6 +180,41 @@ function SinglePlayerGame() {
     }
   }, [playingTime, gameRunning]);
 
+  useEffect(() => {
+    if (playingTime > 0 && !gameRunning) {
+      const savePlayerScore = () => {
+        // save the score to db
+        fetch("http://localhost:3001/user/score/add", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            score: playingTime,
+            gameMode: "singlePlayer",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // after it has been saved to db
+            if (data.msg === "Score inserted successfully") {
+              // fill score board data
+              setScores(data.scores);
+              return;
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+        return;
+      };
+      // save the score to db
+      savePlayerScore();
+    }
+  }, [playingTime, gameRunning, name]);
+
   return (
     <div>
       <h1 className="App-title">SpongeBob Memory Game</h1>
@@ -210,9 +248,25 @@ function SinglePlayerGame() {
           Play
         </button>
       </div>
+      <p>Moves: {moves}</p>
       <p>Game Time: {playingTime}</p>
       {victoryMsg !== "" ? (
-        <h3>{victoryMsg}</h3>
+        <>
+          <h3>{victoryMsg}</h3>
+          <div className="Score-board">
+            <h3>Top 10 scores:</h3>
+            <ol>
+              {scores &&
+                scores.map((score, index) => {
+                  return (
+                    <li>
+                      {score.name}: {score.score}s
+                    </li>
+                  );
+                })}
+            </ol>
+          </div>
+        </>
       ) : (
         <div className="Cards-container">
           {cards &&

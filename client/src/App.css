@@ -162,6 +162,14 @@ button:disabled.Play-game    {
   background-color: #ffffff;
 }
 
+.Score-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
