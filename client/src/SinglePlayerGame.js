@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
+import Link from "./Link";
 import "./App.css";
 
 const possibleCards = [
@@ -55,7 +56,6 @@ function SinglePlayerGame() {
   const [nameInputDisabled, setNameInputDisabled] = useState(false);
   const [okButtonDisabled, setOkButtonDisabled] = useState(false);
   const [playButtonDisabled, setPlayButtonDisabled] = useState(true);
-  const [scores, setScores] = useState([]);
 
   let timeout = useRef(null);
 
@@ -200,8 +200,6 @@ function SinglePlayerGame() {
           .then((data) => {
             // after it has been saved to db
             if (data.msg === "Score inserted successfully") {
-              // fill score board data
-              setScores(data.scores);
               return;
             }
           })
@@ -252,20 +250,8 @@ function SinglePlayerGame() {
       <p>Game Time: {playingTime}</p>
       {victoryMsg !== "" ? (
         <>
-          <h3>{victoryMsg}</h3>
-          <div className="Score-board">
-            <h3>Top 10 scores:</h3>
-            <ol>
-              {scores &&
-                scores.map((score, index) => {
-                  return (
-                    <li>
-                      {score.name}: {score.score}s
-                    </li>
-                  );
-                })}
-            </ol>
-          </div>
+          <h3 className="Victory-title">{victoryMsg}</h3>
+          <Link href="/single-player-top-scores">View top 10 scores</Link>
         </>
       ) : (
         <div className="Cards-container">

@@ -75,8 +75,25 @@ getSinglePlayerBest10Scores = () => {
   });
 };
 
+get10BestScores = (gameMode) => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT s.score, u.name FROM score s, user u, user_score us WHERE us.scoreId = s.id and us.userId = u.id and s.gameMode = ? ORDER BY s.score asc LIMIT 10;",
+      [gameMode],
+      (error, result) => {
+        if (error) {
+          return reject(error);
+        } else {
+          return resolve(result);
+        }
+      }
+    );
+  });
+};
+
 exports.createUser = createUser;
 exports.getUserIdFromName = getUserIdFromName;
 exports.setScore = setScore;
 exports.insertUserScoreRelation = insertUserScoreRelation;
 exports.getSinglePlayerBest10Scores = getSinglePlayerBest10Scores;
+exports.get10BestScores = get10BestScores;

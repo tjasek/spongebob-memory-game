@@ -48,9 +48,20 @@ app.post("/user/score/add", async (req, res) => {
       setScoreAndGetId
     );
     if (userScoreId > 0) {
-      const scores = await db.getSinglePlayerBest10Scores();
-      res.send({ msg: "Score inserted successfully", scores: scores });
+      // just store the score, no need to show it on the same page
+      res.send({ msg: "Score inserted successfully" });
     }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+// get the top 10 scores board based on the playing mode
+app.get("/user/scores/get/:gameMode", async (req, res) => {
+  const gameMode = req.params.gameMode;
+  try {
+    const scores = await db.get10BestScores(gameMode);
+    res.send({ msg: "Scores fetched successfully", scores: scores });
   } catch (e) {
     console.log(e);
   }
