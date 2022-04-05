@@ -131,17 +131,13 @@ function SinglePlayerGame() {
       setOpenedCards([]);
       return;
     }
-    // This is to flip the cards back after 1.5s duration
-    timeout = setTimeout(() => {
-      setOpenedCards([]);
-    }, 1500);
   };
 
   // when there are 2 opened cards evaluate if they are a pair
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
-      timeout = setTimeout(evaluate, 1500);
+      timeout = setTimeout(evaluate, 500);
       return () => {
         clearTimeout(timeout);
       };
@@ -152,7 +148,7 @@ function SinglePlayerGame() {
   useEffect(() => {
     const checkCompletion = () => {
       if (Object.keys(foundCouples).length === possibleCards.length) {
-        setVictoryMsg("WIN");
+        setVictoryMsg("YOU WIN!");
         setGameRunning(false);
       }
     };
