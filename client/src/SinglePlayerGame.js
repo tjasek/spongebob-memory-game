@@ -162,6 +162,7 @@ function SinglePlayerGame() {
       if (Object.keys(foundCouples).length === possibleCards.length) {
         setVictoryMsg("YOU WIN!");
         setGameRunning(false);
+        setPlayButtonDisabled(true);
       }
     };
     checkCompletion();
