@@ -2,6 +2,43 @@
 
 body {
   background-color: #6dcff6;
+  font-family: "Press Start 2P", cursive;
+}
+
+input {
+  width: 200px;
+  border: none;
+  border-bottom: black 5px solid;
+  height: 70px;
+  font-size: 25px;
+  margin: 20px;
+  padding-left: 10px;
+}
+
+input:active {
+  border:none;
+}
+
+button {
+  height: 70px;
+  margin: 20px;
+  font-size: 20px;
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+  border: 5px solid;
+  background-color: #eabdd2;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #d76aa1;
+}
+
+button:disabled {
+  pointer-events: none;
+  color: #686868;
+  border-color: #686868;
+  background-color: #f7e6ee;
 }
 
 .App {
@@ -17,7 +54,7 @@ body {
   margin-top: 20px;
   font-family: "Press Start 2P", cursive;
   color: #fce92a;
-  text-shadow: 2px 2px #ff0000;
+  text-shadow: 3px 5px #ff0000;
 }
 
 .App-mode-buttons {
@@ -30,12 +67,6 @@ body {
 
 .App-mode-buttons button {
   width: 250px;
-  height: 70px;
-  margin: 20px;
-  font-size: 20px;
-  font-family: "Press Start 2P", cursive;
-  cursor: pointer;
-  border: 5px solid;
 }
 
 .App-header {
