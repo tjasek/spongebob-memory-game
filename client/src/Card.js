@@ -1,5 +1,4 @@
 import React from "react";
-import spongebob from "./images/sponge-bob-back.jpg";
 import "./Card.css";
 
 const Card = ({ onClick, card, index, isOpened, isInactive, isDisabled }) => {
@@ -13,7 +12,7 @@ const Card = ({ onClick, card, index, isOpened, isInactive, isDisabled }) => {
       onClick={handleClick}
     >
       <div className="Card-back">
-        <img src={spongebob} alt="spongebob" />
+        <h1 className="App-title">SB</h1>
       </div>
       <div className="Card-front">
         <img src={card.image} alt="spongebob" />
