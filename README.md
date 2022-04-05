@@ -41,3 +41,24 @@ React: npm start
 6. Stopped at 10:00 on 5.4.2022 (total 11h)
 7. Start at 20:20 on 5.4.2022
 8. Stop at 21:20 on 5.4.2022 (total 12h)
+
+# Possible improvements
+
+0. Improve UI :D
+1. Create sequelize db models instead of mysql plain queries
+2. Create prod and dev environment files (dotenv) and setup build scripts
+3. Create authentication for the game so the scores can be saved for the loggedin user (rewards for players, email notifications on score board changes, challenges from other players to fight against winner and take over the score board first place - additional points to overcome the winner)
+4. Add different difficulties for the game (easy/medium/professional)
+5. Add noises for when the player wins the game and some animation effects (better user engadgement and addiction/reward for the brain)
+6. Create admin area so the admin can change name of the game and images used for the memory and colors of UI
+7. Surprise memory reorder of cards during the game
+8. Surprise bomb under the card that uncovers more cards sourrounding it
+9. Surprise gift on multiplayer mode that a user have more possible moves on his turn
+10. Winner animation
+11. Enable music for game time (on the settings page)
+12. Code tests
+13. Validations of inputs
+14. User names should be unique and the system should be able to handle storing of score based on user id or unique user name
+15. Error pages
+16. Error handling
+17. Add restart button for the game
