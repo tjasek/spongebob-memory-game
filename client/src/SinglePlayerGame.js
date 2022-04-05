@@ -48,6 +48,8 @@ function SinglePlayerGame() {
   const [openCards, setOpenedCards] = useState([]);
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const [foundCouples, setFoundCouples] = useState([]);
+  const [gameRunning, setGameRunning] = useState(false);
+  const [victoryMsg, setVictoryMsg] = useState("");
 
   let timeout = useRef(null);
 
@@ -74,6 +76,8 @@ function SinglePlayerGame() {
   };
 
   const playGame = () => {
+    // set game started
+    setGameRunning(true);
     // Set the shufeled cards
     setCards(shuffleCards.bind(null, possibleCards.concat(possibleCards)));
     // enable cards
@@ -101,6 +105,7 @@ function SinglePlayerGame() {
       setOpenedCards((prev) => [...prev, index]);
       disable();
     } else {
+      clearTimeout(timeout.current);
       setOpenedCards([index]);
     }
   };
@@ -142,6 +147,17 @@ function SinglePlayerGame() {
     }
   });
 
+  // when found couples array changes check if the array is the same as initial array
+  useEffect(() => {
+    const checkCompletion = () => {
+      if (Object.keys(foundCouples).length === possibleCards.length) {
+        setVictoryMsg("WIN");
+        setGameRunning(false);
+      }
+    };
+    checkCompletion();
+  }, [foundCouples]);
+
   return (
     <div>
       <h1 className="App-title">SpongeBob Memory Game</h1>
@@ -166,22 +182,26 @@ function SinglePlayerGame() {
           Play
         </button>
       </div>
-      <div className="Cards-container">
-        {cards &&
-          cards.map((card, index) => {
-            return (
-              <Card
-                key={index}
-                card={card}
-                index={index}
-                isDisabled={shouldDisableAllCards}
-                isInactive={isCardInactive(card)}
-                isOpened={isCardOpened(index)}
-                onClick={cardClicked}
-              />
-            );
-          })}
-      </div>
+      {victoryMsg !== "" ? (
+        <h3>{victoryMsg}</h3>
+      ) : (
+        <div className="Cards-container">
+          {cards &&
+            cards.map((card, index) => {
+              return (
+                <Card
+                  key={index}
+                  card={card}
+                  index={index}
+                  isDisabled={shouldDisableAllCards}
+                  isInactive={isCardInactive(card)}
+                  isOpened={isCardOpened(index)}
+                  onClick={cardClicked}
+                />
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 }
