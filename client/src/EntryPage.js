@@ -1,5 +1,5 @@
 import Link from "./Link";
-import logo from "./spongebob-logo.png";
+import logo from "./images/spongebob-logo.png";
 
 const EntryPage = () => {
   return (

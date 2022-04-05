@@ -1,4 +1,4 @@
-import logo from "./spongebob-logo.png";
+import logo from "./images/spongebob-logo.png";
 
 const MultiPlayerGame = () => {
   return (
