@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mysql = require("mysql");
 
 // Instantiate app
 const app = express();
@@ -17,6 +18,14 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+
+// DB setup
+const db = mysql.createConnection({
+  user: "root",
+  password: "root",
+  host: "localhost",
+  database: "spongebob-memory",
+});
 
 // Start app on port 3001
 app.listen(3001, () => {
