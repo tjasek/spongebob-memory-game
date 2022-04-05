@@ -78,7 +78,7 @@ getSinglePlayerBest10Scores = () => {
 get10BestScores = (gameMode) => {
   return new Promise((resolve, reject) => {
     connection.query(
-      "SELECT s.score, u.name FROM score s, user u, user_score us WHERE us.scoreId = s.id and us.userId = u.id and s.gameMode = ? ORDER BY s.score asc LIMIT 10;",
+      "SELECT s.score, u.name, s.createdAt FROM score s, user u, user_score us WHERE us.scoreId = s.id and us.userId = u.id and s.gameMode = ? ORDER BY s.score asc LIMIT 10;",
       [gameMode],
       (error, result) => {
         if (error) {

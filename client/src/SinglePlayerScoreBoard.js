@@ -12,7 +12,7 @@ function SinglePlayerScoreBoard() {
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -38,15 +38,18 @@ function SinglePlayerScoreBoard() {
       <div className="Score-board">
         <h3>Top 10 scores:</h3>
         <ol>
-          {scores &&
+          {scores.length > 0 &&
             scores.map((score, index) => {
+              const date = new Date(score.createdAt);
               return (
                 <li key={index}>
-                  {score.name}: {score.score}s
+                  {score.name}: {score.score}s -{" "}
+                  {date.toLocaleDateString("si-SI")}
                 </li>
               );
             })}
         </ol>
+        {scores.length === 0 && <p>No scores yet</p>}
       </div>
     </div>
   );
