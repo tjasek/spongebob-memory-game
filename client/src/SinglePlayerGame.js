@@ -47,6 +47,7 @@ function SinglePlayerGame() {
   const [cards, setCards] = useState([]);
   const [openCards, setOpenedCards] = useState([]);
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
+  const [foundCouples, setFoundCouples] = useState([]);
 
   const createPlayer = () => {
     // check if name not null, throw error if it is
@@ -87,6 +88,10 @@ function SinglePlayerGame() {
 
   const isCardOpened = (id) => {
     return openCards.includes(id);
+  };
+
+  const isCardInactive = (card) => {
+    return Boolean(foundCouples[card.id]);
   };
 
   const cardClicked = (index) => {
@@ -131,7 +136,7 @@ function SinglePlayerGame() {
                 card={card}
                 index={index}
                 isDisabled={shouldDisableAllCards}
-                isInactive={false}
+                isInactive={isCardInactive(card)}
                 isOpened={isCardOpened(index)}
                 onClick={cardClicked}
               />
