@@ -3,9 +3,9 @@ This is a memory game where a player can challenge his memory by finding the pai
 
 # How to run the node and react app?
  
-Node for prod: npm run start
-Node for development: npm run dev
-React: npm start
+0. Node for prod: ```npm run start```
+1. Node for development: ```npm run dev```
+2. React: ```npm start```
 
 # Links to main pages
 
