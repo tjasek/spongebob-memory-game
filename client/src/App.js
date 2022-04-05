@@ -1,4 +1,5 @@
 import SinglePlayerGame from "./SinglePlayerGame";
+import MultiPlayerGame from "./MultiPlayerGame";
 import SinglePlayerScoreBoard from "./SinglePlayerScoreBoard";
 import EntryPage from "./EntryPage";
 import Route from "./Routes";
@@ -15,6 +16,9 @@ function App() {
       </Route>
       <Route path="/single-player-top-scores">
         <SinglePlayerScoreBoard />
+      </Route>
+      <Route  path="/multi-player">
+        <MultiPlayerGame />
       </Route>
     </div>
   );
