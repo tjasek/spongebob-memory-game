@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const mysql = require("mysql");
+const db = require("./dbutils");
 
 // Instantiate app
 const app = express();
@@ -22,26 +22,38 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// DB setup
-const db = mysql.createConnection({
-  user: "root",
-  password: "root",
-  host: "localhost",
-  database: "spongebob-memory",
-});
-
 // api endpoints
 // create user
-app.post("/user/add", (req, res) => {
+app.post("/user/add", async (req, res) => {
   const name = req.body.name;
+  try {
+    const userId = await db.createUser(name);
+    res.send({ msg: "User inserted successfully", userId: userId });
+  } catch (e) {
+    console.log(e);
+  }
+});
 
-  db.query("INSERT INTO user (name) values (?)", [name], (error, result) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.send({ msg: "User inserted successfully" });
+// save score and return top 10 scores
+app.post("/user/score/add", async (req, res) => {
+  const name = req.body.name;
+  const score = req.body.score;
+  const gameMode = req.body.gameMode;
+
+  try {
+    const userId = await db.getUserIdFromName(name);
+    const setScoreAndGetId = await db.setScore(gameMode, score);
+    const userScoreId = await db.insertUserScoreRelation(
+      userId,
+      setScoreAndGetId
+    );
+    if (userScoreId > 0) {
+      const scores = await db.getSinglePlayerBest10Scores();
+      res.send({ msg: "Score inserted successfully", scores: scores });
     }
-  });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 // Start app on port 3001
