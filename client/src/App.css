@@ -80,7 +80,70 @@ button:disabled {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ffffff;
+}
+
+.Single-player-setup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Form-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.Form-row input {
+  width: 180px;
+  margin-right: 10px;
+  font-size: 22px;
+}
+
+.Form-row button {
+  height: 75px;
+}
+
+.Error {
+  color: #ff0000;
+}
+
+button.Play-game {
+    width: 300px;
+    font-size: 30px;
+    color: #ff0000;
+    background-color: #fce92a;
+    text-transform: uppercase;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    border-color: #ff0000;
+    box-shadow: 0 .2em #ff0000; 
+}
+
+button:hover.Play-game {
+  background-color: #fcb92a;
+}
+
+button:disabled.Play-game    {
+  width: 300px;
+  color: #eabdd2;
+  background-color: #fff7a4;
+  text-transform: uppercase;
+  -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+  border-color: #eabdd2;
+  box-shadow: 0 .2em #eabdd2; 
+}
+
+.Break-row {
+  flex-basis: 100%;
+  height: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -110,7 +173,7 @@ button:disabled {
   .App-title {
     line-height: 45px;
     text-shadow: 2px 2px #ff0000;
-}
+  }
 
   .App-mode-buttons {
     display: flex;
@@ -118,5 +181,5 @@ button:disabled {
     justify-content: center;
     align-items: center;
     width: 100%;
-}
+  }
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SinglePlayerGame from "./SinglePlayerGame";
 import "./App.css";
 import logo from "./spongebob-logo.png";
 
@@ -25,6 +26,7 @@ function App() {
           </div>
         </>
       )}
+      {mode === "singlePlayer" && <SinglePlayerGame />}
     </div>
   );
 }
