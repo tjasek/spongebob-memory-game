@@ -37,3 +37,5 @@ React: npm start
 1. Stopped at 19:15 on 3.4.2022 (total 1h 45 min)
 2. Start at 9:45 on 4.4.2022
 3. Stopped at 10:25 on 4.4.2022 (total 2h 25 min)
+4. Start at 16:30 on 4.4 and stopped at 23:30 for a research (total 9h 25 min)
+5. Start at 8:30 on 5.4
