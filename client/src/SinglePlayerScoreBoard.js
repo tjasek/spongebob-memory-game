@@ -41,7 +41,7 @@ function SinglePlayerScoreBoard() {
           {scores &&
             scores.map((score, index) => {
               return (
-                <li>
+                <li key={index}>
                   {score.name}: {score.score}s
                 </li>
               );
