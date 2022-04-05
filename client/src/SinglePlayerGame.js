@@ -51,6 +51,9 @@ function SinglePlayerGame() {
   const [gameRunning, setGameRunning] = useState(false);
   const [playingTime, setPlayingTime] = useState(0);
   const [victoryMsg, setVictoryMsg] = useState("");
+  const [nameInputDisabled, setNameInputDisabled] = useState(false);
+  const [okButtonDisabled, setOkButtonDisabled] = useState(false);
+  const [playButtonDisabled, setPlayButtonDisabled] = useState(true);
 
   let timeout = useRef(null);
 
@@ -70,7 +73,16 @@ function SinglePlayerGame() {
       body: JSON.stringify({ name: name }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // after it has been saved to db
+        if (data.msg === "User inserted successfully") {
+          // make the input and OK button inactive
+          setNameInputDisabled(true);
+          setOkButtonDisabled(true);
+          // make the start button active
+          setPlayButtonDisabled(false);
+        }
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
@@ -175,16 +187,25 @@ function SinglePlayerGame() {
             name="Player-name"
             id="Player-name"
             placeholder="Enter your name"
+            disabled={nameInputDisabled}
             onChange={(e) => {
               setName(e.target.value);
             }}
           ></input>
-          <button className="Create-player" onClick={createPlayer}>
+          <button
+            className="Create-player"
+            onClick={createPlayer}
+            disabled={okButtonDisabled}
+          >
             OK
           </button>
         </div>
         <div className="Break-row"></div>
-        <button className="Play-game" onClick={playGame}>
+        <button
+          className="Play-game"
+          onClick={playGame}
+          disabled={playButtonDisabled}
+        >
           Play
         </button>
       </div>
