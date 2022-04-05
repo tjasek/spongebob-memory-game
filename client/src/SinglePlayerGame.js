@@ -49,6 +49,7 @@ function SinglePlayerGame() {
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const [foundCouples, setFoundCouples] = useState([]);
   const [gameRunning, setGameRunning] = useState(false);
+  const [playingTime, setPlayingTime] = useState(0);
   const [victoryMsg, setVictoryMsg] = useState("");
 
   let timeout = useRef(null);
@@ -158,6 +159,15 @@ function SinglePlayerGame() {
     checkCompletion();
   }, [foundCouples]);
 
+  useEffect(() => {
+    // start counting time
+    if (gameRunning) {
+      setTimeout(() => {
+        setPlayingTime(playingTime + 1);
+      }, 1000);
+    }
+  }, [playingTime, gameRunning]);
+
   return (
     <div>
       <h1 className="App-title">SpongeBob Memory Game</h1>
@@ -182,6 +192,7 @@ function SinglePlayerGame() {
           Play
         </button>
       </div>
+      <p>Game Time: {playingTime}</p>
       {victoryMsg !== "" ? (
         <h3>{victoryMsg}</h3>
       ) : (
